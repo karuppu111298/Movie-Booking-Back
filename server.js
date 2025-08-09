@@ -8,15 +8,15 @@ const userRoutes = require('./routes/user_routes');
 const postRoutes = require('./routes/post_routes');
 
 const cors = require('cors');
+require('dotenv').config();
 
 
 const PORT = config.port || 5000;
 app.use(bodyParser.json());
-// app.use(cors({
-//   origin: "http://localhost:8081",
-//   credentials: true
-// }));
-app.use(cors());
+app.use(cors({
+  origin: process.env.CLIENT_URL,
+  credentials: true
+}));
 
 app.use('/api', userRoutes);
 app.use('/api', authRoutes);
