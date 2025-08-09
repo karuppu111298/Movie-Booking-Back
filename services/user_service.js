@@ -24,13 +24,25 @@ const getUsers = async () => {
   }
 };
 
+const editUser = async (id) => {
+  try {
+   
+    const user_rec = await User.findOne({ _id:id });
+    return { success:true, user_rec, message:"User Successfully Listed" };
+  } catch (err) {
+    throw new Error('Error list user: ' + err.message);
+  }
+};
+
 const updateUser = async (id, userData) => {
   try {
-    // Update only the description field
-    var desc = userData.description;
 
-    const updatedUser = await User.findByIdAndUpdate( id, { description: desc  }, { new: true } );
-    return updatedUser;
+    const updatedUser = await User.findByIdAndUpdate( 
+      id,
+       userData, 
+      { new: true }
+    );
+    return { success:true, updatedUser, message:"User Successfully Updated" };
   } catch (err) {
     throw new Error('Error updating user: ' + err.message);
   }
@@ -45,4 +57,4 @@ const deleteUser = async (id) => {
   }
 };
 
-module.exports = { createUser, getUsers, updateUser, deleteUser};
+module.exports = { createUser, getUsers, editUser, updateUser, deleteUser};
