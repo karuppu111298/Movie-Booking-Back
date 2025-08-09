@@ -4,7 +4,6 @@ const config = require('../config/config');
 mongoose.connect(config.mongoURI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
-  serverSelectionTimeoutMS: 30000
 })
   .then(() => {
     console.log('Successfully Connected to MongoDB');
