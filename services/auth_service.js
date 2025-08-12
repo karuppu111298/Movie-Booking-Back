@@ -33,8 +33,8 @@ const validateRefreshToken = (token) => {
 
 // login code start
 
-const loginUser = async (email, password) => {
-  const user = await findUserByEmail(email);
+const loginUser = async (email, password, role) => {
+  const user = await findUserByEmail(email,role);
   const now = new Date();
 
   if (!user) {
@@ -70,8 +70,8 @@ const loginUser = async (email, password) => {
   };
 };
 // 1. Find User by Email
-const findUserByEmail = async (email) => {
-  return await User.findOne({ email });
+const findUserByEmail = async (email, role) => {
+  return await User.findOne({ email, role });
 };
 
 // 2. Check if User is Blocked

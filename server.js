@@ -6,6 +6,9 @@ const config = require('./config/config');
 const authRoutes = require('./routes/auth_routes');
 const userRoutes = require('./routes/user_routes');
 const postRoutes = require('./routes/post_routes');
+const movieRoutes = require('./routes/movie_routes');
+const screenRoutes = require('./routes/screen_routes');
+const movieAssignRoutes = require('./routes/movie_assign_routes');
 
 const cors = require('cors');
 require('dotenv').config();
@@ -18,9 +21,15 @@ app.use(cors({
   credentials: true
 }));
 
+
+app.use('/uploads', express.static('uploads'));
+
 app.use('/api', userRoutes);
 app.use('/api', authRoutes);
 app.use('/api', postRoutes);
+app.use('/api', movieRoutes);
+app.use('/api', screenRoutes);
+app.use('/api', movieAssignRoutes);
 
 app.listen(PORT, () => {
   console.log('Express server is running successfully', PORT);
