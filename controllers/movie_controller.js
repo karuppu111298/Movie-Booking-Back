@@ -3,15 +3,9 @@ const movieService = require('../services/movie_service');
 
 const createMovie = async (req, res) => {
   try {
-    // Call movieService to create the movie and handle the upload
     const result = await movieService.createMovie(req);
-
     if (result.success) {
-      res.status(201).json({
-        success: true,
-        message: 'Movie successfully created',
-        movie: result.movie,
-      });
+      res.status(201).json({ result });
     } else {
       res.status(400).json({ success: false, message: result.message });
     }

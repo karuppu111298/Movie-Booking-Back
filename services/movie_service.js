@@ -20,7 +20,7 @@ const createMovie = async (req) => {
     const newMovie = new Movie(movieData);
     await newMovie.save();
 
-    return { success: true, movie: newMovie };
+   return { success:true, movie: newMovie, message:"Movie Successfully Created" };
   } catch (error) {
     return { success: false, message: 'Error saving movie: ' + error.message };
   }

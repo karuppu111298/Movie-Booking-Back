@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 const screenSchema = new mongoose.Schema({
-    screen_name: { type: String, required: true, unique: true },
+    screen_name: { type: String, required: true, },
     seat_qty: { type: Number, required: true },
     seat_number: {
         left: [ { id: Number, name: String, } ],
